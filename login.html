@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
+	<title>MHTCET Login Panel</title>
+
+	<style type="text/css">
+		body::-webkit-scrollbar {
+  		display: none;
+		}
+			*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			font-family: 'Poppins', sans-serif;
+			user-select: none;
+		}
+		html{
+			scroll-behavior: smooth;
+			overflow-x: hidden;
+		}
+		a{
+			text-decoration: none;
+		}
+		a:hover{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		.login_info{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		max-width: 100vw;
+   		box-sizing: border-box;
+		}
+	.main_Div{
+		transform: scale(1.2);
+		background: rgba(255, 255, 255, 1);
+		border-radius: .3rem;
+		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+		transition: .2s ease all;
+    	box-sizing: border-box;
+    	padding: 2rem 4rem;
+	}
+	.flex{
+		width: 100%;
+		display: inline-flex;
+		justify-content: space-between;
+	}
+	input{
+		border: none;
+		outline: none;
+		padding: .3rem .5rem;
+		border-bottom: .1rem solid grey;
+	}
+	</style>
+</head>
+<body>
+
+<section class="login_info">
+	<div class="main_Div">
+		<div class="login_panel">
+			<form action="Student Dashboard/dashboard.html" onsubmit="return validation_login()" target="blank">
+				<h4>Student ID : </h4>
+				<input autocomplete="off" type="text" id="student_Id" placeholder="Type here..."><br><br><br>
+				<h4>Password : </h4>
+				<input type="text" id="login_Password" placeholder="Type here...">
+				<br><br>
+			<div class="flex">
+			<input autocomplete="off" class="btn btn-primary" type="submit" value="Login" name="login" id="login_btn">
+			<button class="btn btn-info text-white" id="clear_login">Clear</button>
+		</div>
+		</form>
+		</div>
+	</div>
+	</section>
+
+	<script>
+		
+		const clear = document.getElementById('clear_login');
+
+		clear.onclick = () =>{
+			location.reload();
+			return false;
+		}
+
+		function validation_login(){
+		var student_id = document.getElementById('student_Id').value;
+		var password = document.getElementById('login_Password').value;
+
+			if(student_id == ""){
+				alert("Please fill your details");
+				return false;
+			}
+			if(isNaN(student_id)){
+				alert("Invalid Student Id");
+				return false;
+			}
+			// if(student_id.length > 5){
+			// 	alert("Invalid Student ID");
+			// 	return false;
+			// }
+			let arr_length = login_info.length;
+			if(student_id > arr_length){
+			alert("Invalid Student ID");
+			return false;
+			}
+
+			if(password == ""){
+				alert("Please fill your details");
+				return false;
+			}
+			if((password.length < 5) || (password.length > 8)){
+				alert("Invalid Password");
+				return false;
+			}
+
+		
+		
+
+		let login_id = login_info[student_id - 1].ID;
+		let login_password = login_info[student_id - 1].Password;
+		let typeof_login_id = typeof login_id;
+		let typeof_login_password = typeof login_password;
+			if((typeof_login_id == 'undefined') || (typeof_login_password == 'undefined')){
+				alert("Invalid ID or Passowrd");
+				return false;
+			}
+
+			if((login_id != student_id) || (password != login_password)){
+				alert("Incorrect ID or Passowrd");
+				return false;
+			}
+
+
+
+
+		}
+
+	</script>
+
+	<script type="text/javascript" src="login_details.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js" integrity="sha512-vyRAVI0IEm6LI/fVSv/Wq/d0KUfrg3hJq2Qz5FlfER69sf3ZHlOrsLriNm49FxnpUGmhx+TaJKwJ+ByTLKT+Yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
